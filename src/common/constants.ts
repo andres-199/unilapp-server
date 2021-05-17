@@ -1,10 +1,10 @@
 const dbConfig = {
   dialect: 'postgres',
-  host: '198.74.59.59',
+  host: '157.245.91.192',
   port: 5432,
   username: 'postgres',
-  password: 'bdaserti',
-  database: 'yonarp',
+  password: 'restaurantesllaneros',
+  database: 'unilapp',
   user: 'postgres',
 };
 
