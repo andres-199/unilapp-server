@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { AuthModule } from './auth/auth.module';
 import { EstadosModule } from './estados/estados.module';
 import { FacultadesModule } from './facultades/facultades.module';
 import { FinalidadesModule } from './finalidades/finalidades.module';
@@ -18,6 +19,7 @@ import { UsuariosModule } from './usuarios/usuarios.module';
     RecuperacionesContrasenaModule,
     TipoPublicacionesModule,
     UsuariosModule,
+    AuthModule,
   ],
 })
 export class PublicModule {}

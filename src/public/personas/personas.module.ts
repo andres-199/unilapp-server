@@ -2,10 +2,13 @@ import { CommonFunctionsController } from '../../common/common-functions.control
 import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
 import { PersonasMiddleware } from './personas.middleware';
 import { CommonModule } from '../../common/common.module';
+import { PersonasController } from './personas.controller';
+import { PersonasService } from './personas.service';
 
 @Module({
   imports: [CommonModule],
-  controllers: [CommonFunctionsController],
+  controllers: [PersonasController],
+  providers: [PersonasService],
 })
 export class PersonasModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
