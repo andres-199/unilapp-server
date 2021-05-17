@@ -1,0 +1,14 @@
+import { CommonFunctionsController } from '../../common/common-functions.controller';
+import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
+import { {{nameModule}}Middleware } from './{{from}}.middleware';
+import { CommonModule } from '../../common/common.module';
+
+@Module({
+  imports: [CommonModule],
+  controllers: [CommonFunctionsController],
+})
+export class {{nameModule}}Module implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply({{nameModule}}Middleware).forRoutes('{{pathRouter}}')
+  }
+}

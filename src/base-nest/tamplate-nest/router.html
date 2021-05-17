@@ -1,0 +1,10 @@
+import { Routes } from 'nest-router'
+{{#each modulos}}
+import { {{name}}Module } from './{{path}}/{{path}}.module';
+{{/each}}
+
+export const publicRoutes: Routes = [
+{{#each modulos}}
+  { path: '{{path}}', module: {{name}}Module },
+{{/each}}
+];
