@@ -1,5 +1,6 @@
 import { Routes } from 'nest-router';
 import { AuthModule } from './auth/auth.module';
+import { ContactosModule } from './contactos/contactos.module';
 import { EstadosModule } from './estados/estados.module';
 import { FacultadesModule } from './facultades/facultades.module';
 import { FinalidadesModule } from './finalidades/finalidades.module';
@@ -15,8 +16,12 @@ export const publicRoutes: Routes = [
   { path: 'finalidades', module: FinalidadesModule },
   { path: 'personas', module: PersonasModule },
   { path: 'publicaciones', module: PublicacionesModule },
-  { path: 'recuperaciones-contrasena', module: RecuperacionesContrasenaModule },
+  {
+    path: 'recuperaciones-contrasena',
+    module: RecuperacionesContrasenaModule,
+  },
   { path: 'tipo-publicaciones', module: TipoPublicacionesModule },
   { path: 'usuarios', module: UsuariosModule },
   { path: 'auth', module: AuthModule },
+  { path: 'contactos', module: ContactosModule },
 ];
