@@ -30,6 +30,9 @@ export class Facultad extends Model<Facultad> {
   @Column
   imagen: string;
 
-  @HasMany(() => Publicacion, { as: 'Publicacion', foreignKey: 'facultad_id' })
-  Publicacion: Publicacion[];
+  @HasMany(() => Publicacion, {
+    as: 'Publicaciones',
+    foreignKey: 'facultad_id',
+  })
+  Publicaciones: Publicacion[];
 }

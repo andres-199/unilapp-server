@@ -2,10 +2,13 @@ import { CommonFunctionsController } from '../../common/common-functions.control
 import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
 import { FacultadesMiddleware } from './facultades.middleware';
 import { CommonModule } from '../../common/common.module';
+import { FacultadesController } from './facultades.controller';
+import { FacultadesService } from './facultades.service';
 
 @Module({
   imports: [CommonModule],
-  controllers: [CommonFunctionsController],
+  controllers: [FacultadesController, CommonFunctionsController],
+  providers: [FacultadesService],
 })
 export class FacultadesModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
