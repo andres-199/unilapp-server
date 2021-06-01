@@ -10,7 +10,10 @@ export class FacultadesService {
     const { Facultad } = this.sequelize.models;
     const options: FindOptions = {};
     options.include = [
-      { association: 'Publicaciones', include: ['TipoPublicacion'] },
+      {
+        association: 'Publicaciones',
+        include: ['TipoPublicacion', 'Finalidad', 'Estado'],
+      },
     ];
     return Facultad.findByPk(facultadId, options).then(facultad => {
       facultad = facultad.toJSON() as any;
