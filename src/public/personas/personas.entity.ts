@@ -1,47 +1,39 @@
-import { Table, Model, Column, DataType, HasMany } from 'sequelize-typescript'
-import { Publicacion } from '../publicaciones/publicaciones.entity'
-import { Usuario } from '../usuarios/usuarios.entity'
+import { Table, Model, Column, DataType, HasMany } from 'sequelize-typescript';
+import { Publicacion } from '../publicaciones/publicaciones.entity';
+import { Usuario } from '../usuarios/usuarios.entity';
 
 @Table({
-	schema: 'public',
-	tableName: 'personas',
+  schema: 'public',
+  tableName: 'personas',
 })
-
 export class Persona extends Model<Persona> {
-
-	@Column({
-  	type: DataType.INTEGER,
-  	autoIncrement: true,
-  	primaryKey: true,
-  	unique: true,
-  	field: 'id',
-	})
-	id: number
-
-
+  @Column({
+    type: DataType.INTEGER,
+    autoIncrement: true,
+    primaryKey: true,
+    unique: true,
+    field: 'id',
+  })
+  id: number;
 
   @Column
-	nombre: string
+  nombre: string;
 
   @Column
-	apellido: string
+  apellido: string;
 
   @Column
-	correo: string
+  correo: string;
 
   @Column
-	createdAt: Date
+  createdAt: Date;
 
   @Column
-	updatedAt: Date
+  updatedAt: Date;
 
-
-
-  @HasMany(() => Publicacion, { as: 'Publicacion', foreignKey: 'persona_id' })
-	Publicacion: Publicacion[]
+  @HasMany(() => Publicacion, { as: 'Publicaciones', foreignKey: 'persona_id' })
+  Publicacion: Publicacion[];
 
   @HasMany(() => Usuario, { as: 'Usuario', foreignKey: 'persona_id' })
-	Usuario: Usuario[]
-
-
+  Usuario: Usuario[];
 }

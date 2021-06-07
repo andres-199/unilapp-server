@@ -1,6 +1,6 @@
 import { HttpException, Inject, Injectable } from '@nestjs/common';
 import { Sequelize } from 'sequelize-typescript';
-import { CreateOptions } from 'sequelize/types';
+import { CreateOptions, FindOptions } from 'sequelize/types';
 import { ErrorResponse } from 'src/interfaces/error-response.interface';
 import { _Response } from 'src/interfaces/response.interface';
 import { Persona } from './persona.interface';
@@ -30,5 +30,27 @@ export class PersonasService {
     response.message =
       'Te has registrado en UNILAPP ✔, ingresa con tu correo y contraseña y consulta las publicaciones de la comunidad.';
     return response;
+  }
+
+  getPublicaciones(personaId: number) {
+    const { Persona } = this.sequelize.models;
+    const options: FindOptions = {};
+    options.include = [
+      {
+        association: 'Publicaciones',
+        include: ['TipoPublicacion', 'Finalidad', 'Estado'],
+      },
+    ];
+    return Persona.findByPk(personaId, options).then(persona => {
+      const response = {};
+      persona = persona.toJSON() as any;
+      for (const publicacion of persona['Publicaciones']) {
+        if (response[publicacion.TipoPublicacion.nombre])
+          response[publicacion.TipoPublicacion.nombre].push(publicacion);
+        else response[publicacion.TipoPublicacion.nombre] = [publicacion];
+      }
+
+      return response;
+    });
   }
 }
