@@ -1,4 +1,11 @@
-import { Table, Model, Column, DataType, HasMany } from 'sequelize-typescript';
+import {
+  Table,
+  Model,
+  Column,
+  DataType,
+  HasMany,
+  HasOne,
+} from 'sequelize-typescript';
 import { Publicacion } from '../publicaciones/publicaciones.entity';
 import { Usuario } from '../usuarios/usuarios.entity';
 
@@ -36,4 +43,7 @@ export class Persona extends Model<Persona> {
 
   @HasMany(() => Usuario, { as: 'Usuario', foreignKey: 'persona_id' })
   Usuario: Usuario[];
+
+  @HasOne(() => Usuario, { as: 'User', foreignKey: 'persona_id' })
+  User: Usuario;
 }

@@ -29,6 +29,7 @@
     "handlebars": "^4.4.5",
     "inquirer": "^7.0.0",
     "nest-router": "^1.0.9",
+    "nodemailer": "^6.6.1",
     "pg": "^7.12.1",
     "pg-structure": "^4.2.2",
     "pluralize": "^8.0.0",
